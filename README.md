@@ -41,7 +41,7 @@ cd functional-scala-colisweb
 6. Enter continuous compilation mode.
 
 ```bash
-sbt:Functional Scala> ~ compile
+sbt> ~compile
 ```
 
 # Legal
