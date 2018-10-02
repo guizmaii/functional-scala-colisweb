@@ -20,40 +20,29 @@ Depending on which workshop you are in, you will work through one or more segmen
 
 # Usage
 
-## From the UI
+## From the Github UI
 
-1. Download the repository as a [zip archive](https://github.com/jdegoes/functional-scala/archive/master.zip).
-2. Unzip the archive, usually by double-clicking on the file.
-3. Configure the source code files in the IDE or text editor of your choice.
+1. Fork this repo on your own Github account.
+2. Clone your fork locally: 
 
-## From the Command Line
-
-1. Open up a terminal window.
-2. Create a new directory.
-
-    ```bash
-    mkdir functional-scala
-    ```
+```bash
+git clone git@github.com:<your_github_account>/functional-scala-colisweb.git
+```
 3. Navigate to the new directory.
-
-    ```bash
-    cd functional-scala
-    ```
-4. Clone the repository.
-
-    ```bash
-    git clone git@github.com:jdegoes/functional-scala.git .
-    ```
+   
+```bash
+cd functional-scala-colisweb
+```
 5. Launch `sbt`.
 
-    ```bash
-    ./sbt
-    ```
+```bash
+./sbt
+```
 6. Enter continuous compilation mode.
 
-    ```bash
-    sbt:Functional Scala> ~ compile
-    ```
+```bash
+sbt:Functional Scala> ~ compile
+```
 
 # Legal
 
