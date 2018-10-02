@@ -48,7 +48,7 @@ object types {
   // Prove that `A * 1` is equivalent to `A` by implementing the following two
   // functions.
   //
-  def to1[A](t: (A, Unit)): A = ???
+  def to1[A](t: (A, Unit)): A   = ???
   def from1[A](a: A): (A, Unit) = ???
 
   //
@@ -57,7 +57,7 @@ object types {
   // Prove that `A * 0` is equivalent to `0` by implementing the following two
   // functions.
   //
-  def to2[A](t: (A, Nothing)): Nothing = ???
+  def to2[A](t: (A, Nothing)): Nothing   = ???
   def from2[A](n: Nothing): (A, Nothing) = ???
 
   //
@@ -74,7 +74,7 @@ object types {
   // Prove that `A + 0` is equivalent to `A` by implementing the following two
   // functions.
   //
-  def to3[A](t: Either[A, Nothing]): A = ???
+  def to3[A](t: Either[A, Nothing]): A   = ???
   def from3[A](a: A): Either[A, Nothing] = ???
 
   //
@@ -133,7 +133,6 @@ object types {
 object functions {
   type ??? = Nothing
 
-
   //
   // EXERCISE 1
   //
@@ -147,9 +146,8 @@ object functions {
   //
   // Convert the following non-function into a function.
   //
-  def arrayUpdate1[A](arr: Array[A], i: Int, f: A => A): Unit =
-    arr.update(i, f(arr(i)))
-  def arrayUpdate2[A](arr: Array[A], i: Int, f: A => A): ??? = ???
+  def arrayUpdate1[A](arr: Array[A], i: Int, f: A => A): Unit = arr.update(i, f(arr(i)))
+  def arrayUpdate2[A](arr: Array[A], i: Int, f: A => A): ???  = ???
 
   //
   // EXERCISE 3
@@ -170,7 +168,7 @@ object functions {
     id += 1
     newId
   }
-  def freshId2(/* ??? */): (Int, Int) = ???
+  def freshId2( /* ??? */ ): (Int, Int) = ???
 
   //
   // EXERCISE 5
@@ -178,8 +176,8 @@ object functions {
   // Convert the following non-function into a function.
   //
   import java.time.LocalDateTime
-  def afterOneHour1: LocalDateTime = LocalDateTime.now.plusHours(1)
-  def afterOneHour2(/* ??? */): LocalDateTime = ???
+  def afterOneHour1: LocalDateTime              = LocalDateTime.now.plusHours(1)
+  def afterOneHour2( /* ??? */ ): LocalDateTime = ???
 
   //
   // EXERCISE 6
@@ -209,7 +207,7 @@ object functions {
     processor.charge(account, coffee.price)
     coffee
   }
-  final case class Charge(/* ??? */)
+  final case class Charge( /* ??? */ )
   def buyCoffee2(account: Account): (Coffee, Charge) = ???
 
   //
@@ -263,13 +261,13 @@ object functions {
   }
   def draw1(size: Int): Draw = new Draw {
     val canvas = Array.fill(size, size)(false)
-    var x = 0
-    var y = 0
+    var x      = 0
+    var y      = 0
 
-    def goLeft(): Unit = x -= 1
+    def goLeft(): Unit  = x -= 1
     def goRight(): Unit = x += 1
-    def goUp(): Unit = y += 1
-    def goDown(): Unit = y -= 1
+    def goUp(): Unit    = y += 1
+    def goDown(): Unit  = y -= 1
     def draw(): Unit = {
       def wrap(x: Int): Int =
         if (x < 0) (size - 1) + ((x + 1) % size) else x % size
@@ -285,8 +283,7 @@ object functions {
 }
 
 object higher_order {
-  case class Parser[+E, +A](
-    run: String => Either[E, (String, A)])
+  case class Parser[+E, +A](run: String => Either[E, (String, A)])
 
   def fail[E](e: E): Parser[E, Nothing] =
     Parser(input => Left(e))
@@ -295,9 +292,10 @@ object higher_order {
     Parser(input => Right((input, a)))
 
   def char[E](e: E): Parser[E, Char] =
-    Parser(input =>
-      if (input.length == 0) Left(e)
-      else Right((input.drop(1), input.charAt(0))))
+    Parser(
+      input =>
+        if (input.length == 0) Left(e)
+        else Right((input.drop(1), input.charAt(0))))
 
   //
   // EXERCISE 1
@@ -339,8 +337,7 @@ object higher_order {
   //
   // Implement the following higher-order function.
   //
-  def alt[E1, E2, A, B](l: Parser[E1, A], r: Parser[E2, B]):
-    Parser[E2, Either[A, B]] = ???
+  def alt[E1, E2, A, B](l: Parser[E1, A], r: Parser[E2, B]): Parser[E2, Either[A, B]] = ???
 }
 
 object poly_functions {
@@ -374,7 +371,7 @@ object poly_functions {
   // Count the number of unique implementations of the following method.
   //
   def countExample1[A, B](a: A, b: B): Either[A, B] = ???
-  val countExample1Answer = ???
+  val countExample1Answer                           = ???
 
   //
   // EXERCISE 4
@@ -382,7 +379,7 @@ object poly_functions {
   // Count the number of unique implementations of the following method.
   //
   def countExample2[A, B](f: A => B, g: A => B, a: A): B = ???
-  val countExample2Answer = ???
+  val countExample2Answer                                = ???
 
   //
   // EXERCISE 5
@@ -399,13 +396,11 @@ object poly_functions {
         date + ", there were " +
         events.length + " power outages"
   val Expected =
-    Map("2018-09-20" ->
-      "On date 2018-09-20, there were 1 power outages")
-  def groupBy1(
-    l: List[String],
-    by: String => String)(
-      reducer: (String, List[String]) => String):
-      Map[String, String] = ???
+    Map(
+      "2018-09-20" ->
+        "On date 2018-09-20, there were 1 power outages")
+  def groupBy1(l: List[String], by: String => String)(reducer: (String, List[String]) => String): Map[String, String] =
+    ???
   // groupBy1(Data, By)(Reducer) == Expected
 
   //
@@ -420,9 +415,9 @@ object poly_functions {
 }
 
 object higher_kinded {
-  type ?? = Nothing
-  type ???[A] = Nothing
-  type ????[A, B] = Nothing
+  type ??          = Nothing
+  type ???[A]      = Nothing
+  type ????[A, B]  = Nothing
   type ?????[F[_]] = Nothing
 
   trait `* => *`[F[_]]
@@ -492,7 +487,7 @@ object higher_kinded {
     final def append[A](l: F[A], r: F[A]): F[A] =
       uncons(l) match {
         case Some((l, ls)) => append(ls, cons(l, r))
-        case None => r
+        case None          => r
       }
 
     final def filter[A](fa: F[A])(f: A => Boolean): F[A] =
@@ -501,7 +496,7 @@ object higher_kinded {
     final def bind[A, B](fa: F[A])(f: A => F[B]): F[B] =
       uncons(fa) match {
         case Some((a, as)) => append(f(a), bind(as)(f))
-        case None => empty[B]
+        case None          => empty[B]
       }
 
     final def fmap[A, B](fa: F[A])(f: A => B): F[B] = {
@@ -547,16 +542,17 @@ object higher_kinded {
 }
 
 object typeclasses {
+
   /**
-   * {{
-   * Reflexivity:   a ==> equals(a, a)
-   *
-   * Transitivity:  equals(a, b) && equals(b, c) ==>
-   *                equals(a, c)
-   *
-   * Symmetry:      equals(a, b) ==> equals(b, a)
-   * }}
-   */
+    * {{
+    * Reflexivity:   a ==> equals(a, a)
+    *
+    * Transitivity:  equals(a, b) && equals(b, c) ==>
+    *                equals(a, c)
+    *
+    * Symmetry:      equals(a, b) ==> equals(b, a)
+    * }}
+    */
   trait Eq[A] {
     def equals(l: A, r: A): Boolean
   }
@@ -571,15 +567,15 @@ object typeclasses {
         def equals(l: List[A], r: List[A]): Boolean =
           (l, r) match {
             case (Nil, Nil) => true
-            case (Nil, _) => false
-            case (_, Nil) => false
+            case (Nil, _)   => false
+            case (_, Nil)   => false
             case (l :: ls, r :: rs) =>
               Eq[A].equals(l, r) && equals(ls, rs)
           }
       }
   }
   implicit class EqSyntax[A](val l: A) extends AnyVal {
-    def === (r: A)(implicit eq: Eq[A]): Boolean =
+    def ===(r: A)(implicit eq: Eq[A]): Boolean =
       eq.equals(l, r)
   }
 
@@ -588,16 +584,16 @@ object typeclasses {
   //
   sealed trait Ordering
   case object EQUAL extends Ordering
-  case object LT extends Ordering
-  case object GT extends Ordering
+  case object LT    extends Ordering
+  case object GT    extends Ordering
   object Ordering {
     implicit val OrderingEq: Eq[Ordering] = new Eq[Ordering] {
       def equals(l: Ordering, r: Ordering): Boolean =
         (l, r) match {
           case (EQUAL, EQUAL) => true
-          case (LT, LT) => true
-          case (GT, GT) => true
-          case _ => false
+          case (LT, LT)       => true
+          case (GT, GT)       => true
+          case _              => false
         }
     }
   }
@@ -614,33 +610,35 @@ object typeclasses {
     }
   }
   implicit class OrdSyntax[A](val l: A) extends AnyVal {
-    def =?= (r: A)(implicit A: Ord[A]): Ordering =
+    def =?=(r: A)(implicit A: Ord[A]): Ordering =
       A.compare(l, r)
 
-    def < (r: A)(implicit A: Ord[A]): Boolean =
+    def <(r: A)(implicit A: Ord[A]): Boolean =
       Eq[Ordering].equals(A.compare(l, r), LT)
 
-    def <= (r: A)(implicit A: Ord[A]): Boolean =
+    def <=(r: A)(implicit A: Ord[A]): Boolean =
       (l < r) || (this === r)
 
-    def > (r: A)(implicit A: Ord[A]): Boolean =
+    def >(r: A)(implicit A: Ord[A]): Boolean =
       Eq[Ordering].equals(A.compare(l, r), GT)
 
-    def >= (r: A)(implicit A: Ord[A]): Boolean =
+    def >=(r: A)(implicit A: Ord[A]): Boolean =
       (l > r) || (this === r)
 
-    def === (r: A)(implicit A: Ord[A]): Boolean =
+    def ===(r: A)(implicit A: Ord[A]): Boolean =
       Eq[Ordering].equals(A.compare(l, r), EQUAL)
 
-    def !== (r: A)(implicit A: Ord[A]): Boolean =
+    def !==(r: A)(implicit A: Ord[A]): Boolean =
       !Eq[Ordering].equals(A.compare(l, r), EQUAL)
   }
   case class Person(age: Int, name: String)
   object Person {
     implicit val OrdPerson: Ord[Person] = new Ord[Person] {
       def compare(l: Person, r: Person): Ordering =
-        if (l.age < r.age) LT else if (l.age > r.age) GT
-        else if (l.name < r.name) LT else if (l.name > r.name) GT
+        if (l.age < r.age) LT
+        else if (l.age > r.age) GT
+        else if (l.name < r.name) LT
+        else if (l.name > r.name) GT
         else EQUAL
     }
     implicit val EqPerson: Eq[Person] = new Eq[Person] {
@@ -690,11 +688,11 @@ object typeclasses {
   type ???[A] = Nothing
 
   /**
-   * {{
-   * // Associativity:
-   * (a <> b) <> c === a <> (b <> c)
-   * }}
-   */
+    * {{
+    * // Associativity:
+    * (a <> b) <> c === a <> (b <> c)
+    * }}
+    */
   trait SemigroupClass[A] {
     def append(l: => A, r: => A): A
   }
@@ -703,20 +701,18 @@ object typeclasses {
     def apply[A](implicit A: Semigroup[A]): Semigroup[A] = A
 
     implicit val SemigroupString: Semigroup[String] =
-      instanceOf(
-        new SemigroupClass[String] {
-          def append(l: => String, r: => String): String = l + r
-        })
+      instanceOf(new SemigroupClass[String] {
+        def append(l: => String, r: => String): String = l + r
+      })
     implicit def SemigroupList[A]: Semigroup[List[A]] =
-      instanceOf(
-        new SemigroupClass[List[A]] {
-          def append(l: => List[A], r: => List[A]): List[A] = l ++ r
-        })
+      instanceOf(new SemigroupClass[List[A]] {
+        def append(l: => List[A], r: => List[A]): List[A] = l ++ r
+      })
   }
   implicit def AnyToSemigroupSyntax[A](a: => A): SemigroupSyntax[A] =
     new SemigroupSyntax(() => a)
   class SemigroupSyntax[A](l: () => A) {
-    def <> (r: => A)(implicit A: Semigroup[A]): A = A.append(l(), r)
+    def <>(r: => A)(implicit A: Semigroup[A]): A = A.append(l(), r)
   }
   //
   // EXERCISE 3
@@ -756,11 +752,11 @@ object typeclasses {
   // `zero`, which satisfies additional laws.
   //
   /**
-   * {{
-   * append(zero, a) === a
-   * append(a, zero) === a
-   * }}
-   */
+    * {{
+    * append(zero, a) === a
+    * append(a, zero) === a
+    * }}
+    */
   trait MonoidClass[A] extends SemigroupClass[A] {
     /* ??? */
   }
