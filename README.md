@@ -8,7 +8,7 @@ This repo is a fork of the John A. De Goes [functional-scala](https://github.com
 
 ## Intro
 
-Welcome to the official repository for _Functional Scala_, a workshop taught by John A. De Goes, which introduces attendees to functional programming in Scala.
+Welcome to the (un)official repository for _Functional Scala_, a workshop (originally) taught by John A. De Goes, which introduces attendees to functional programming in Scala.
 
 Depending on which workshop you are in, you will work through one or more segments of the following chapters:
 
