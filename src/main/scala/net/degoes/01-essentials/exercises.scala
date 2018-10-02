@@ -117,6 +117,16 @@ object types {
   // Create an ADT model of a game world, including a map, a player, non-player
   // characters, different classes of items, and character stats.
   //
+  // Game characteristics:
+  // --------------------
+  //
+  //  - Our game world is composed of realms and paths linking realms.
+  //  - A realm has an identifier, an inventory which is a list of items, and has some characters present in it.
+  //    It could be a plain, a dungeon or a cave.
+  //  - A character an inventory. He could be a player or a non player.
+  //  - A player has a name.
+  //  - A non player can be a ogre, a troll or a wizard.
+  //
   type GameWorld = ???
 }
 
