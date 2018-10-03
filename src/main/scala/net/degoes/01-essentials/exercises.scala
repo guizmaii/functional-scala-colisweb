@@ -24,8 +24,7 @@ object types {
   //
   // List all values of the type `(Boolean, Boolean)`.
   //
-  val TupleBoolBoolValues: List[(Boolean, Boolean)] =
-    ???
+  val TupleBoolBoolValues: List[(Boolean, Boolean)] = ???
 
   //
   // EXERCISE 4
