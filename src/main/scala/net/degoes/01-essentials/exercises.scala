@@ -37,7 +37,7 @@ object types {
   // EXERCISE 5
   //
   // Create a product type of `Int` and `String`, representing the age and
-  // name of a person.
+  // name of a person, in the two possible forms of product types in Scala.
   //
   type Person = ???
 
