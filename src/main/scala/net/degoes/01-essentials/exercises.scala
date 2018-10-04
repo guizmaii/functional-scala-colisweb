@@ -292,8 +292,10 @@ object higher_order {
   def char[E](e: E): Parser[E, Char] =
     Parser(
       input =>
-        if (input.length == 0) Left(e)
-        else Right((input.drop(1), input.charAt(0)))
+        input.headOption match {
+          case None       => Left(e)
+          case Some(char) => Right((input.drop(1), char))
+        }
     )
 
   //
