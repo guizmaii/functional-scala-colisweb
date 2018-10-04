@@ -285,17 +285,16 @@ object functions {
 object higher_order {
   case class Parser[+E, +A](run: String => Either[E, (String, A)])
 
-  def fail[E](e: E): Parser[E, Nothing] =
-    Parser(input => Left(e))
+  def fail[E](e: E): Parser[E, Nothing] = Parser(input => Left(e))
 
-  def point[A](a: => A): Parser[Nothing, A] =
-    Parser(input => Right((input, a)))
+  def point[A](a: => A): Parser[Nothing, A] = Parser(input => Right((input, a)))
 
   def char[E](e: E): Parser[E, Char] =
     Parser(
       input =>
         if (input.length == 0) Left(e)
-        else Right((input.drop(1), input.charAt(0))))
+        else Right((input.drop(1), input.charAt(0)))
+    )
 
   //
   // EXERCISE 1
