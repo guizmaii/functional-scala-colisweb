@@ -250,13 +250,15 @@ object functions {
   // Create a purely-functional drawing library that is equivalent in
   // expressive power to the following procedural library.
   //
+  type Bitmap = List[List[Boolean]]
+
   trait Draw {
     def goLeft(): Unit
     def goRight(): Unit
     def goUp(): Unit
     def goDown(): Unit
     def draw(): Unit
-    def finish(): List[List[Boolean]]
+    def finish(): Bitmap
   }
   def draw1(size: Int): Draw = new Draw {
     val canvas: Array[Array[Boolean]] = Array.fill(size, size)(false)
@@ -276,7 +278,7 @@ object functions {
 
       canvas.updated(x2, canvas(x2).updated(y2, true))
     }
-    def finish(): List[List[Boolean]] = canvas.map(_.toList).toList
+    def finish(): Bitmap = canvas.map(_.toList).toList
   }
 }
 
