@@ -259,9 +259,9 @@ object functions {
     def finish(): List[List[Boolean]]
   }
   def draw1(size: Int): Draw = new Draw {
-    val canvas = Array.fill(size, size)(false)
-    var x      = 0
-    var y      = 0
+    val canvas: Array[Array[Boolean]] = Array.fill(size, size)(false)
+    var x                             = 0
+    var y                             = 0
 
     def goLeft(): Unit  = x -= 1
     def goRight(): Unit = x += 1
@@ -276,8 +276,7 @@ object functions {
 
       canvas.updated(x2, canvas(x2).updated(y2, true))
     }
-    def finish(): List[List[Boolean]] =
-      canvas.map(_.toList).toList
+    def finish(): List[List[Boolean]] = canvas.map(_.toList).toList
   }
 }
 
