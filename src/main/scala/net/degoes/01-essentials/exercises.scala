@@ -283,21 +283,6 @@ object functions {
 }
 
 object higher_order {
-  case class Parser[+E, +A](run: String => Either[E, (String, A)])
-
-  def fail[E](e: E): Parser[E, Nothing] = Parser(input => Left(e))
-
-  def point[A](a: => A): Parser[Nothing, A] = Parser(input => Right((input, a)))
-
-  def char[E](e: E): Parser[E, Char] =
-    Parser(
-      input =>
-        input.headOption match {
-          case None       => Left(e)
-          case Some(char) => Right((input.drop(1), char))
-        }
-    )
-
   //
   // EXERCISE 1
   //
@@ -333,8 +318,34 @@ object higher_order {
   //
   def compose[A, B, C](f: B => C, g: A => B): A => C = ???
 
+
+  // ------
+
+  case class Parser[+E, +A](run: String => Either[E, (String, A)])
+
   //
   // EXERCISE 6
+  //
+  // Implement the following higher-order function.
+  //
+  def fail[E](e: E): Parser[E, Nothing] = ???
+
+  //
+  // EXERCISE 7
+  //
+  // Implement the following higher-order function.
+  //
+  def point[A](a: => A): Parser[Nothing, A] = ???
+
+  //
+  // EXERCISE 8
+  //
+  // Implement the following higher-order function.
+  //
+  def char[E](e: E): Parser[E, Char] = ???
+
+  //
+  // EXERCISE 9
   //
   // Implement the following higher-order function.
   //
